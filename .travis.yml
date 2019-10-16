@@ -1,0 +1,18 @@
+sudo: true
+dist: xenial
+services:
+  - docker
+language: python
+python:
+  - '3.7'
+before_install:
+  - "pip install 'lander>=0.1.0,<0.2'"
+script:
+  # Compile PDF using containerized lsst-texmf
+  - "docker run --rm -v `pwd`:/workspace -w /workspace lsstsqre/lsst-texmf:latest sh -c 'make'"
+  # Deploy website. See https://github.com/lsst-sqre/lander for CLI options
+  - "lander --upload --pdf DMTR-171.pdf --lsstdoc DMTR-171.tex --env=travis --ltd-product dmtr-171"
+env:
+  global:
+    - secure: "hsfV+zRvQR0mw0a9Ish5m8MaMNQyokl1ADhyV5DDHBwoshFkDQEbL5LAh905XG+SvFUBmpriQ6s948dU2n8oFV7Mc/BKj76KHnmiKijps0rtJKkIdYMrE+t4MXqUNSqkSNE5BRzWoGg5QX+P4TAeZeyyLBqAGd2exalY8Mhs9v1OL29eKSNI7mjnXsskx4cbpUrXDWMM1IeiRYDMIyFIiVM7DDYGV/wSjBNp4yB1miYrDw17NcqWI6LI+wGrIzhdVchCZLzQhF1YvtcQWdpfRBnH3M8ISsiE1rjQfzTYX3ipL+un69k+3v+hubEWuLxeb3BqaQWZwAa5gUqwGgIMsexATwUAHc/xWhErYvBYa0Pmnv82N+OcKVdVDkXr2gpl00SDtdI1nGNGEIhduvLt+P7P3g/DQQWi21lSCxR7NX5Cnfl+heEAzqD6FY5+YBaEhB8Mr1L4x4bj5OxUdVLCDQVBaLdzoVRJBJ5ikROQQQP3Uq1Q7yrYmD0RGK6Khhf0ky8tByfr0abN7/PpPxvI1PkXoJAcs+KS7St0oQwh15o9cUqIUGHfZrRC8aheFi/hFyBs8WKxyuzV4x9gk9ciPxNWVGpTaReT+Mp9UFB/br6sckL7uCzJkSfboVQhqm52/v3Sch76igOJd5OCjWCUuwBJyGR/8nYEsiD3jkCtni4="
+    - secure: "wg8SFGxnEojpRddQc4rexDzUfariNIK+qpolk0r3pCNQy/zIhdodnN7mxvSbJPAKK6jJNXrg+IFrFK/hd/KULhFXKDMzA1WJWuPAMjAqIcoasipHCBcSoAcgKXv42BAQjlay5WvLm7HTA4MLdEMYwv8tOTnYU8p82TnUi67qNgf4BHw0Y/x/rWLHW/5rW57e4goRMJzBTvjzSWnPKI08OIn7g8ccQ8gBbdcDsvHZibpGnx+CO8oTUIi6BKtCIiH78Q3YLNWj9a9akj4AAY1S2gjzw9bIR57QIoCMoPbw775t2SPhQAwqHZpv0eq99qcQYEvEVVIr63wWZHYXQlDjvpN2FNvdeCfg1+HlrvElKMj3+iGfiqT89lwTDvM8tL22rIJq4rlnAAW1n1kpUR53mNW75BfyPywk7Xk1OdNTjjzzVJ//nTwkOlSM2BXTTstKQ/AFKWN/ADqjpmy+KRaQVN0qNUMbF4drNGPwhCG+WEzs2KJMbwukLS64aSpAxfAx+XO4WBjuUU07+6pPDANVlMJhUa3ADTvQVpDpEH1pnKh1zlqRYuntuqyRLoEy/aF/JEhUwW0pALP+HnnDJ0Gd9JDAblFeXn2gEL7x8dq8UZdg2xvIUxftPu2d2TWOFjr/5+BnefFjFBWGXhX3mFjqnduuQr3qE6BiAXt/Q06Gn+w="
