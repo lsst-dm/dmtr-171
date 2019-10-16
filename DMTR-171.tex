@@ -1,0 +1,421 @@
+\documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
+\usepackage{geometry}
+\usepackage{longtable,booktabs}
+\usepackage{enumitem}
+\usepackage{arydshln}
+
+\input meta.tex
+
+\providecommand{\tightlist}{
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+
+\def\milestoneName{ComCam interface verification readiness}
+\def\milestoneId{LDM-503-6}
+\def\product{Data Management}
+
+\setDocCompact{true}
+
+\title{ LDM-503-6 ComCam interface verification readiness Test Plan and Report}
+\setDocRef{\lsstDocType-\lsstDocNum}
+\date{\vcsdate}
+\setDocUpstreamLocation{\url{https://github.com/lsst/lsst-texmf/examples}}
+\author{  }
+
+\input history_and_info.tex
+
+
+\setDocAbstract{
+This is the test plan and report for LDM-503-6 (ComCam interface verification readiness), an LSST level 2 milestone pertaining to the Data Management Subsystem.
+}
+
+
+\maketitle
+
+\section{Introduction}
+\label{sect:intro}
+
+
+\subsection{Objectives}
+\label{sect:objectives}
+
+This test will verify the readiness of the ComCam DM interface. This
+milestone records successful transfer of an image equivalent to one raft
+from the DAQ at the summit to reliable storage in the LSST Data Facility
+at NCSA, from where it will be made available for scientific evaluation
+through the LSST Science Platform ~There are many steps along the way
+from the DAQ to the L1 handoff machine for staff to be able to view the
+images along with query the EFD about the image, and then transferred to
+NCSA and ingested into the permanent record of the survey.~ ~
+
+
+
+\subsection{System Overview}
+\label{sect:systemoverview}
+
+The system includes the comcam DAQ at the summit, and the comcam DAQ
+network connecting the Comcam systems to the support infrastructure at
+the base for comcam. ~ On the comcam DAQ network is the CC-header
+service system, the CC-forwarder, CC-archiver, and on a base network the
+L1 handoff with the OODS and DBB services. ~At NCSA, the DBB ingest
+environment, the raw image file systems, the ingested image file systems
+and the LSP notebook environment. ~ This milestone includes many steps.
+~ It will ensure that image data can be acquired from the camera, ~a
+single YAML header file is generated for all 9 CCDs (or sensors),
+ingested into butler in file systems, served through NFS for the base
+systems, made available for DBB resources, sent to NCSA, ingested at
+NCSA and made available for processing/viewing. ~ ~\\
+
+\subsection{Applicable Documents}\label{applicable-documents}
+
+\citeds{LDM-294} Data Management Organization and Management\\
+\citeds{LDM-503} DM Test Plan\\
+\citeds{LDM-148} Data Management System Design\\[2\baselineskip]
+
+
+\subsection{Document Overview}
+\label{sect:docoverview}
+
+This document was generated from Jira, obtaining the relevant information from the 
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testPlan/LVV-P50}{LVV-P50}
+~Jira Test Plan and related Test Cycles (
+  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C106}{LVV-C106}
+).
+
+Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}), the applicable documentation, and explains how this document is organized.
+Section \ref{sect:configuration}  describes the configuration used for this test.
+Section \ref{sect:personnel} describes the necessary roles and lists the individuals assigned to them.
+%Section \ref{sect:plannedtestactivities} provides the list of planned test cycles and test cases, including all relevant information that fully describes the test campaign.
+
+Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary}, an overall assessment statement and suggestions for possible improvements.
+Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
+
+The current status of test plan LVV-P50 in Jira is \textbf{ Draft }.
+
+\subsection{References}
+\label{sect:references}
+\renewcommand{\refname}{}
+\bibliography{lsst,refs,books,refs_ads}
+\section{Test Configuration}
+\label{sect:configuration}
+
+\subsection{Data Collection}
+
+  Observing is not required for this test campaign.
+
+\subsection{Verification Environment}
+\label{sect:hwconf}
+  The verification environment includes the DAQ, cc-archiver,
+cc-header-service, CC-forwarder, L1-handoff, long haul network, NCSA DBB
+gateway environments, GPFS file systems at NCSA, and the LSP at NCSA. ~~
+
+
+  \subsection{Entry Criteria}
+  Images are being taken from the com-cam environment.~
+
+
+  \subsection{Exit Criteria}
+  Images are being ingested and available on the LSP for viewing and
+processing by science staff at NCSA.~~
+
+
+
+\newpage
+\section{Personnel}
+\label{sect:personnel}
+
+The following personnel are involved in this test activity:
+
+\begin{itemize}
+\item Test Plan (LVV-P50) owner: 
+\item Test Cycles:
+\begin{itemize}
+  \item LVV-C106 owner: 
+    Michelle Butler
+  \begin{itemize}
+    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549} tester: 
+  \end{itemize}
+\end{itemize}
+\item Additional Test Personnel involved:
+  \begin{itemize}
+    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549}: Michelle Gower and Michelle Butler~
+
+  \end{itemize}
+\end{itemize}
+
+\newpage
+
+\section{Overview of the Test Results}
+\label{sect:overview}
+
+\subsection{Summary}
+\label{sect:summarytable}
+
+\begin{longtable}{p{0.12\textwidth}p{0.2\textwidth}p{0.56\textwidth}p{0.12\textwidth}}
+\toprule
+
+  \multicolumn{3}{c}{ Test Cycle {\bf LVV-C106: LDM-503-6 Comcam verification readiness
+ }} \\\hline
+
+  {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} & {\bf \footnotesize issues} \\\toprule
+
+    \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549}
+    & Not Executed &  &
+    \\\hline
+
+\caption{Test Results Summary}
+\label{table:summary}
+\end{longtable}
+
+\subsection{Overall Assessment}
+\label{sect:overallassessment}
+
+Not yet available.
+
+\subsection{Recommended Improvements}
+\label{sect:recommendations}
+
+Not yet available.
+
+\newpage
+\section{Detailed Test Results}
+\label{sect:detailedtestresults}
+
+
+  \subsection{Test Cycle LVV-C106 }
+
+Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C106}{LDM-503-6 Comcam verification readiness
+}} in Jira.
+
+  LDM-503-6 Comcam verification readiness
+\\
+  Status: Not Executed
+
+  Verify that the DM services required for ComCam exist and are ready to
+recieve a image from the comcam DAQ and transfer the file to NCSA for
+viewing on the LSP.~ ~
+
+
+  \subsubsection{Software Version/Baseline}
+    Not provided.
+
+  \subsubsection{Configuration}
+    There are many pieces here. ~ ~ Comcam DAQ, Header service, comcam
+archiver/forwarder, AT-handoff, DM-butler, and DM butler/G3~
+
+
+  \subsubsection{Test Cases in LVV-C106 Test Cycle}
+
+
+    \paragraph{Test Case LVV-T1549 - LDM-503-6 Comcam verification readiness
+ }\mbox{}\\
+
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{\textit{ LVV-T1549 } }
+test case in Jira.
+
+    Verify that Comcam has all the services running and verified working for
+retrieving an image from the comcam DAQ and store it on file systems at
+NCSA for viewing by LSP.~~
+
+
+    \textbf{ Preconditions}:\\
+    Comcam must be at the summit and working.~~
+
+
+    Execution status: {\bf Not Executed }
+
+    Final comment:\\
+
+
+    Detailed step results:
+
+    \begin{longtable}{p{1cm}p{2cm}p{13cm}}
+    \hline
+    {Step} & \multicolumn{2}{c}{Description, Results and Status}\\ \hline
+      1 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      CC-DAQ produces an image~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Expected Result &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      in memory file created in DAQ
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+      2 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Archiver and Forwarder build image with proper header from header
+service~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Expected Result &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      9 image files all with individual headers and then 1 header for all 9
+images too. ~\\[2\baselineskip]
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+      3 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      AT-archiver/forwarder transfers the file to the l1-handoff machine.~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Expected Result &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      image file now found on disk on L1-handoff with hardlinks to 2 different
+file systems (OODS and DBB) services. ~\\[3\baselineskip]
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+      4 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      OODS service running on L1-handoff machine ingests the image file into
+Butler/G3 and readies the file systems for the commissioning cluster at
+the Base to be able to mount and see the new files.~ ~~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Expected Result &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Image file ingested\\[2\baselineskip]
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+      5 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      DBB transfers the file to NCSA thorough the DBB-gateway machines and DTN
+nodes at the base.~~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Expected Result &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      data file arrives at file systems at NCSA\\[2\baselineskip]
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+      6 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Files are ingested into the butler/G3 at NCSA and moved to file systems
+that are viewable by the LSP. ~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Expected Result &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      data can be seen and retrieved by LSP.~~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+    \end{longtable}
+
+
+\input{appendix.tex}
+\end{document}
