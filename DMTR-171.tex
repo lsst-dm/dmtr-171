@@ -3,16 +3,23 @@
 \usepackage{longtable,booktabs}
 \usepackage{enumitem}
 \usepackage{arydshln}
+\usepackage{attachfile}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 
 \input meta.tex
 
+\newcommand{\attachmentsUrl}{https://github.com/\gitorg/\lsstDocType-\lsstDocNum/blob/\gitref/attachments}
 \providecommand{\tightlist}{
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+\setcounter{tocdepth}{4}
+
 \begin{document}
 
-\def\milestoneName{ComCam interface verification readiness}
-\def\milestoneId{LDM-503-6}
+\def\milestoneName{LDM-503-6 ComCam interface verification readiness}
+\def\milestoneId{LVV-P50}
 \def\product{Data Management}
 
 \setDocCompact{true}
@@ -20,14 +27,14 @@
 \title{LDM-503-6: ComCam Interface Verification Readiness Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
 \date{\vcsdate}
-\setDocUpstreamLocation{\url{https://github.com/lsst/lsst-texmf/examples}}
 \author{ Michelle Butler }
 
-\input history_and_info.tex
+\input{history_and_info.tex}
 
 
 \setDocAbstract{
-This is the test plan and report for LDM-503-6 (ComCam interface verification readiness), an LSST level 2 milestone pertaining to the Data Management Subsystem.
+This is the test plan and report for LVV-P50 (LDM-503-6 ComCam interface verification readiness),
+an LSST milestone pertaining to the Data Management Subsystem.
 }
 
 
@@ -40,7 +47,7 @@ This is the test plan and report for LDM-503-6 (ComCam interface verification re
 \subsection{Objectives}
 \label{sect:objectives}
 
-This test will verify the readiness of the ComCam DM interface. This
+ This test will verify the readiness of the ComCam DM interface. This
 milestone records successful transfer of an image equivalent to one raft
 from the DAQ at the summit to reliable storage in the LSST Data Facility
 at NCSA, from where it will be made available for scientific evaluation
@@ -53,7 +60,7 @@ ingested into the permanent record of the survey. ~~
 \subsection{System Overview}
 \label{sect:systemoverview}
 
-The system includes the comcam DAQ at the summit, and the comcam DAQ
+ The system includes the comcam DAQ at the summit, and the comcam DAQ
 network connecting the Comcam systems to the support infrastructure at
 the base. ~ On the comcam DAQ network is the CC-header service system,
 the CC-forwarder, CC-archiver, and on a base network the L1 handoff with
@@ -77,28 +84,34 @@ processing/viewing by the LSP. ~\\[2\baselineskip]
 \subsection{Document Overview}
 \label{sect:docoverview}
 
-This document was generated from Jira, obtaining the relevant information from the 
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testPlan/LVV-P50}{LVV-P50}
+This document was generated from Jira, obtaining the relevant information from the
+\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P50}{LVV-P50}
 ~Jira Test Plan and related Test Cycles (
-  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C106}{LVV-C106}
+\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C106}{LVV-C106}
 ).
 
-Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}), the applicable documentation, and explains how this document is organized.
-Section \ref{sect:configuration}  describes the configuration used for this test.
+Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}),
+the applicable documentation, and explains how this document is organized.
+Section \ref{sect:testplan} provides additional information about the test plan, like for example the configuration
+used for this test or related documentation.
 Section \ref{sect:personnel} describes the necessary roles and lists the individuals assigned to them.
-%Section \ref{sect:plannedtestactivities} provides the list of planned test cycles and test cases, including all relevant information that fully describes the test campaign.
 
-Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary}, an overall assessment statement and suggestions for possible improvements.
+Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary},
+an overall assessment statement and suggestions for possible improvements.
 Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
 
-The current status of test plan LVV-P50 in Jira is \textbf{ Approved }.
+The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P50}{LVV-P50} in Jira is \textbf{ Approved }.
 
 \subsection{References}
 \label{sect:references}
 \renewcommand{\refname}{}
-\bibliography{lsst,refs,books,refs_ads}
-\section{Test Configuration}
-\label{sect:configuration}
+\bibliography{lsst,refs,books,refs_ads,local}
+
+
+\newpage
+\section{Test Plan Details}
+\label{sect:testplan}
+
 
 \subsection{Data Collection}
 
@@ -110,64 +123,92 @@ The current status of test plan LVV-P50 in Jira is \textbf{ Approved }.
 cc-header-service, CC-forwarder, L1-handoff, long haul network, NCSA DBB
 gateway environments, GPFS file systems at NCSA, and the LSP at NCSA. ~~
 
-
   \subsection{Entry Criteria}
   Images are being taken from the com-cam environment from the summit with
 unique names and complete headers.~
-
 
   \subsection{Exit Criteria}
   Images are being ingested and available on the LSP at the LDF for
 viewing and processing by science staff at NCSA.~~
 
 
+\subsection{Related Documentation}
+
+The documentation related to this test campaign should be provided in the following DocuShare Collection
+(as per Verification Artifacts in Jira test plan LVV-P50).
+
+\begin{itemize}
+\item DocuShare Collection Not Specified
+\end{itemize}
+
+
+
+\subsection{PMCS Activity}
+
+Primavera milestones related to the test campaign.
+
+\begin{itemize}
+\item None
+\end{itemize}
+
 
 \newpage
 \section{Personnel}
 \label{sect:personnel}
 
-The following personnel are involved in this test activity:
+The personnel involved in the test campaign is shown in the following table.
 
-\begin{itemize}
-\item Test Plan (LVV-P50) owner: Michelle Butler
-\item Test Cycles:
-\begin{itemize}
-  \item LVV-C106 owner: 
-    Michelle Butler
-  \begin{itemize}
-    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549} tester: 
-  \end{itemize}
-\end{itemize}
-\item Additional Test Personnel involved:
-  \begin{itemize}
-    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549}: Michelle Gower and Michelle Butler ~and Steve P and Felipe M.~
-
-  \end{itemize}
-\end{itemize}
+{\small
+\begin{longtable}{p{3cm}p{3cm}p{3cm}p{6cm}}
+\hline
+\multicolumn{2}{r}{T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P50}{LVV-P50} owner:} &
+\multicolumn{2}{l}{\textbf{ Michelle Butler } }\\\hline
+\multicolumn{2}{r}{T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C106}{LVV-C106} owner:} &
+\multicolumn{2}{l}{\textbf{
+Michelle Butler }
+} \\\hline
+\textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549}
+& {\small Michelle Butler } & {\small  } &
+\begin{minipage}[]{6cm}
+\smallskip
+{\small Michelle Gower and Michelle Butler ~and Steve P and Felipe M.~ }
+\medskip
+\end{minipage}
+\\ \hline
+\end{longtable}
+}
 
 \newpage
 
-\section{Overview of the Test Results}
+\section{Test Campaign Overview}
 \label{sect:overview}
 
 \subsection{Summary}
 \label{sect:summarytable}
 
-\begin{longtable}{p{0.12\textwidth}p{0.2\textwidth}p{0.56\textwidth}p{0.12\textwidth}}
+{\small
+\begin{longtable}{p{2cm}cp{2.3cm}p{8.6cm}p{2.3cm}}
 \toprule
+\multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P50}{LVV-P50}:} &
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-6 ComCam interface verification readiness }} & Approved \\\hline
+\multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C106}{LVV-C106}:} &
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-6 Comcam verification readiness }} & Not Executed \\\hline
+\textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549}
+&  1
+& Not Executed &
+\begin{minipage}[]{9cm}
+\smallskip
 
-  \multicolumn{3}{c}{ Test Cycle {\bf LVV-C106: LDM-503-6 Comcam verification readiness
- }} \\\hline
-
-  {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} & {\bf \footnotesize issues} \\\toprule
-
-    \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549}
-    & Not Executed &  &
-    \\\hline
-
-\caption{Test Results Summary}
+\medskip
+\end{minipage}
+&
+\\\hline
+\caption{Test Campaign Summary}
 \label{table:summary}
 \end{longtable}
+}
 
 \subsection{Overall Assessment}
 \label{sect:overallassessment}
@@ -183,240 +224,232 @@ Not yet available.
 \section{Detailed Test Results}
 \label{sect:detailedtestresults}
 
+\subsection{Test Cycle LVV-C106 }
 
-  \subsection{Test Cycle LVV-C106 }
+Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C106}{LDM-503-6 Comcam verification readiness}} in Jira.
 
-Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C106}{LDM-503-6 Comcam verification readiness
-}} in Jira.
+Test Cycle name: LDM-503-6 Comcam verification readiness\\
+Status: Not Executed
 
-  LDM-503-6 Comcam verification readiness
-\\
-  Status: Not Executed
-
-  Verify that the DM services required for ComCam exist and are ready to
+Verify that the DM services required for ComCam exist and are ready to
 recieve a image from the comcam DAQ at the summit and transfer the file
 to NCSA for viewing on the LSP.~ ~
 
+\subsubsection{Software Version/Baseline}
+Not provided.
 
-  \subsubsection{Software Version/Baseline}
-    Not provided.
-
-  \subsubsection{Configuration}
-    There are many pieces here. ~ ~ Comcam DAQ, Header service, comcam
+\subsubsection{Configuration}
+There are many pieces here. ~ ~ Comcam DAQ, Header service, comcam
 archiver/forwarder, AT-handoff, DTN transfers, ~DM butler/G3, LDF file
 systems, LDF LSP.~
 
+\subsubsection{Test Cases in LVV-C106 Test Cycle}
 
-  \subsubsection{Test Cases in LVV-C106 Test Cycle}
+\paragraph{ LVV-T1549 - LDM-503-6 Comcam verification readiness }\mbox{}\\
 
-
-    \paragraph{Test Case LVV-T1549 - LDM-503-6 Comcam verification readiness
- }\mbox{}\\
-
+Version \textbf{1}.
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{\textit{ LVV-T1549 } }
 test case in Jira.
 
-    Verify that Comcam has all the services running and verified working for
+Verify that Comcam has all the services running and verified working for
 retrieving an image from the comcam DAQ and store it on file systems at
 the LDF for viewing by LSP. ~
 
+\textbf{ Preconditions}:\\
+Comcam must be at the summit and producing images with proper headers. ~
 
-    \textbf{ Preconditions}:\\
-    Comcam must be at the summit and producing images with proper headers. ~
+Execution status: {\bf Not Executed }
 
-
-    Execution status: {\bf Not Executed }
-
-    Final comment:\\
+Final comment:\\
 
 
-    Detailed step results:
+Detailed steps results:
 
-    \begin{longtable}{p{1cm}p{2cm}p{13cm}}
-    \hline
-    {Step} & \multicolumn{2}{c}{Description, Results and Status}\\ \hline
-      1 & Description &
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+CC-DAQ produces an image~
 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      CC-DAQ produces an image~
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+DAQ produces a SAL message that a image has been created~
 
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      & Expected Result &
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+in memory file created in DAQ
 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      in memory file created in DAQ
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
-      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
+ & Status: \textbf{ Not Executed } \\ \hline
 
-      & Status          & Not Executed \\ \hline
-
-      2 & Description &
-
-      \begin{minipage}[t]{13cm}{\footnotesize
-      Archiver and Forwarder build image with proper header from header
+2 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Archiver and Forwarder build image with proper header from header
 service~
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Good image file with proper header with all 9 CCDs~
 
-      & Expected Result &
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      9 image files all with individual headers and then 1 header for all 9
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+9 image files all with individual headers and then 1 header for all 9
 images too. ~\\[2\baselineskip]
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      & Status          & Not Executed \\ \hline
+ & Status: \textbf{ Not Executed } \\ \hline
 
-      3 & Description &
+3 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+AT-archiver/forwarder transfers the file to the l1-handoff machine.~
 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      AT-archiver/forwarder transfers the file to the l1-handoff machine.~
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+l1-handoff machine has image file now on local disk.~~
 
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      & Expected Result &
-
-      \begin{minipage}[t]{13cm}{\footnotesize
-      image file now found on disk on L1-handoff with hardlinks to 2 different
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+image file now found on disk on L1-handoff with hardlinks to 2 different
 file systems (OODS and DBB) services. ~\\[3\baselineskip]
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      & Status          & Not Executed \\ \hline
+ & Status: \textbf{ Not Executed } \\ \hline
 
-      4 & Description &
-
-      \begin{minipage}[t]{13cm}{\footnotesize
-      OODS service running on L1-handoff machine ingests the image file into
+4 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+OODS service running on L1-handoff machine ingests the image file into
 Butler/G3 and readies the file systems for the commissioning cluster at
 the Base to be able to mount and see the new files.~ ~~
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Image file ingested to local butler for Base~
 
-      & Expected Result &
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      Image file ingested\\[2\baselineskip]
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Image file ingested\\[2\baselineskip]
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      & Status          & Not Executed \\ \hline
+ & Status: \textbf{ Not Executed } \\ \hline
 
-      5 & Description &
-
-      \begin{minipage}[t]{13cm}{\footnotesize
-      DBB transfers the file to NCSA thorough the DBB-gateway machines and DTN
+5 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+DBB transfers the file to NCSA thorough the DBB-gateway machines and DTN
 nodes at the base.~~
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
 
-      & Expected Result &
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+data file arrives at file systems at NCSA\\[2\baselineskip]
 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      data file arrives at file systems at NCSA\\[2\baselineskip]
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
-      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
+ & Status: \textbf{ Not Executed } \\ \hline
 
-      & Status          & Not Executed \\ \hline
-
-      6 & Description &
-
-      \begin{minipage}[t]{13cm}{\footnotesize
-      Files are ingested into the butler/G3 at NCSA and moved to file systems
+6 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Files are ingested into the butler/G3 at NCSA and moved to file systems
 that are viewable by the LSP. ~
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
 
-      & Expected Result &
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+data can be seen and retrieved by LSP.~~
 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      data can be seen and retrieved by LSP.~~
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
-      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
+ & Status: \textbf{ Not Executed } \\ \hline
 
-      & Status          & Not Executed \\ \hline
-
-    \end{longtable}
+\end{longtable}
 
 
 \input{appendix.tex}
