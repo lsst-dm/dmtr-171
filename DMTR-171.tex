@@ -32,8 +32,6 @@
 \title{LDM-503-6: ComCam Interface Verification Readiness Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
 \date{\vcsdate}
-\setDocUpstreamLocation{\url{https://github.com/lsst/lsst-texmf/examples}}
->>>>>>> 32a065f... Update change log
 \author{ Michelle Butler }
 
 \input{history_and_info.tex}
@@ -176,7 +174,7 @@ Michelle Butler }
 } \\\hline
 \textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549}
-& {\small Michelle Butler } & {\small  } &
+& {\small Michelle Butler } & {\small Michelle Butler } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small Michelle Gower and Michelle Butler ~and Steve P and Felipe M.~ }
@@ -200,11 +198,11 @@ Michelle Butler }
 \multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P50}{LVV-P50}:} &
 \multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-6: ComCam Interface Verification Readiness }} & Approved \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C106}{LVV-C106}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-6 Comcam verification readiness }} & Not Executed \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-6 Comcam verification readiness }} & Done \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -236,7 +234,7 @@ Not yet available.
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C106}{LDM-503-6 Comcam verification readiness}} in Jira.
 
 Test Cycle name: LDM-503-6 Comcam verification readiness\\
-Status: Not Executed
+Status: Done
 
 Verify that the DM services required for ComCam exist and are ready to
 recieve a image from the comcam DAQ at the summit and transfer the file
@@ -263,9 +261,9 @@ retrieving an image from the comcam DAQ and store it on file systems at
 the LDF for viewing by LSP. ~
 
 \textbf{ Preconditions}:\\
-Comcam must be at the summit and producing images with proper headers. ~
+Comcam must be In LaSerena and producing images with proper headers. ~
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -300,11 +298,12 @@ in memory file created in DAQ
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+1 raft scale (9CCDs) have been created.~ ~
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 2 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -333,11 +332,12 @@ images too. ~\\[2\baselineskip]
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+the headers and the images were built properly.~~
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 3 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -365,11 +365,12 @@ file systems (OODS and DBB) services. ~\\[3\baselineskip]
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+The actual fits files were created.~~
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 4 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -398,11 +399,13 @@ Image file ingested\\[2\baselineskip]
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+the OODS has the list of files ingested and ready for any system at the
+BDC wanting to run against them.~~
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 5 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -424,11 +427,13 @@ data file arrives at file systems at NCSA\\[2\baselineskip]
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+The files arrived, ingested and placed in directory structure:
+/lsstdata/offline/teststand/comcam/Archiver/storage/2020-07-28
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 6 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -450,11 +455,13 @@ data can be seen and retrieved by LSP.~~
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+The files are then linked for the viewing by science platform on
+/project/shared/comcam. ~\\[2\baselineskip]
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 \end{longtable}
 
