@@ -52,38 +52,40 @@ an LSST milestone pertaining to the Data Management Subsystem.
 \subsection{Objectives}
 \label{sect:objectives}
 
- This test will verify the readiness of the ComCam DM interface. This
-milestone records successful transfer of an image equivalent to one raft
-from the DAQ at the summit to reliable storage in the LSST Data Facility
-at NCSA, from where it will be made available for scientific evaluation
-through the LSST Science Platform ~There are many steps along the way
-from the DAQ to the L1 handoff machine, ~transferred to NCSA and
-ingested into the permanent record of the survey. ~~
+ This test campaign will verify the readiness of the ComCam DM interface.
+This milestone records successful transfer of an image equivalent to one
+raft from the DAQ at the summit to reliable storage in the LSST Data
+Facility at NCSA, from where it will be made available for scientific
+evaluation through the Rubin Science Platform ~There are many steps
+along the way from the DAQ to the L1 handoff machine, ~transferred to
+NCSA and ingested into the permanent record of the survey. ~~
 
 
 
 \subsection{System Overview}
 \label{sect:systemoverview}
 
- The system includes the comcam DAQ at the summit, and the comcam DAQ
-network connecting the Comcam systems to the support infrastructure at
-the base. ~ On the comcam DAQ network is the CC-header service system,
-the CC-forwarder, CC-archiver, and on a base network the L1 handoff with
-the OODS and DBB services. ~At NCSA, the DBB ingest environment, the raw
-image file systems, the ingested image file systems and the LSP notebook
-environment. ~ This milestone includes many steps. ~ It will ensure that
-image data can be acquired from the camera, ~a single YAML header file
-is generated for all 9 CCDs (or sensors), is ingested into a butler into
-BDC file systems, served through NFS for the base systems for quick peek
-capabilities, made available for DBB resources, transferred to NCSA,
-ingested by a butler into ~NCSA filesystems and made available for
-processing/viewing by the LSP. ~\\[2\baselineskip]
+ The system includes the ComCam DAQ at the summit, and the ComCam DAQ
+network connecting the ComCam systems to the support infrastructure at
+the base. ~ On the ComCam DAQ network is the ComCam-header service
+system, the ComCam-forwarder, ComCam-archiver, and on a base network the
+L1 handoff with the OODS and DBB services. ~At NCSA, the DBB ingest
+environment, the raw image file systems, the ingested image file systems
+and the RSP notebook aspect ~ This milestone includes many steps. ~ It
+will ensure that image data can be acquired from the camera, ~a single
+YAML header file is generated for all 9 CCDs (or sensors), is ingested
+into a butler into the ~Base Data Center ~file systems, served through
+NFS for the base systems for quick look capabilities, made available for
+DBB resources, transferred to NCSA, ingested by a butler into ~NCSA
+filesystems and made available for processing/viewing by the RSP.
+~\\[2\baselineskip]
 
 \subsection{Applicable Documents}\label{applicable-documents}
 
 \citeds{LDM-294} Data Management Organization and Management\\
 \citeds{LDM-503} DM Test Plan\\
-\citeds{LDM-148} Data Management System Design\\[2\baselineskip]
+\citeds{LDM-148} Data Management System Design\\
+\citeds{LDM-639} Data Management Test Specification\\[2\baselineskip]
 
 
 \subsection{Document Overview}
@@ -124,17 +126,18 @@ The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jsp
 
 \subsection{Verification Environment}
 \label{sect:hwconf}
-  The verification environment includes the DAQ, cc-archiver,
-cc-header-service, CC-forwarder, L1-handoff, long haul network, NCSA DBB
-gateway environments, GPFS file systems at NCSA, and the LSP at NCSA. ~~
+  The verification environment includes the DAQ, ComCam-archiver,
+ComCam-header service, ComCam-forwarder, L1-handoff, long haul network,
+NCSA DBB gateway environments, GPFS file systems at NCSA, and the RSP at
+NCSA. ~~
 
   \subsection{Entry Criteria}
-  Images are being taken from the com-cam environment from the summit with
+  Images can be taken from the ComCam environment from the summit with
 unique names and complete headers.~
 
   \subsection{Exit Criteria}
-  Images are being ingested and available on the LSP at the LDF for
-viewing and processing by science staff at NCSA.~~
+  Images can be ingested ingested and available through the RSP at the LDF
+for viewing and processing by science staff at NCSA. ~
 
 
 \subsection{Related Documentation}
@@ -198,7 +201,7 @@ Michelle Butler }
 \multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P50}{LVV-P50}:} &
 \multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-6: ComCam Interface Verification Readiness }} & Approved \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C106}{LVV-C106}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-6 Comcam verification readiness }} & Done \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-6 ComCam verification readiness }} & Done \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{LVV-T1549}
 &  1
@@ -227,20 +230,25 @@ the progress and how the OR2 went that day.~ ~
 \subsection{Overall Assessment}
 \label{sect:overallassessment}
 
-The test went better than expected. ~ All files generated well with no
-intervention, ~the files transferred but we found that the SCP protocol
-that was used was VERY inefficient for transferring small files over a
-long haul network. ~ During the tests, the team wasn't sure if the LHN
-was really being used, and what the ``data transfer'' time really was.~~
+All files generated well with no intervention, ~the files transferred
+but we found that the SCP protocol that was used was VERY inefficient
+for transferring small files over a long haul network. ~ During the
+tests, the team wasn't sure if the LHN was really being used, and what
+the ``data transfer'' time really was. ~ ~One slight change from the
+original plan, is using the L1 handoff machine for the OODS and DBB
+services. ~ The L1-handoff machine is currently not set up at the BDC.~
+~For this test the OODS and DBB servers were running on the
+ComCam-archiver system. ~ In the future this functionality will be moved
+to the L1-handoff machine. ~
 
 \subsection{Recommended Improvements}
 \label{sect:recommendations}
 
 The DBBBM needs to use a different protocol than SCP. ~ BBCP would be
 much better for performance. ~ Also throughout the tests, it would have
-been handy to have someone on the team that can check the LHN to see if
-we used the LHN, backup networks, and what the speeds of the LHN. ~ We
-will add a networking person to the OR team. ~\\[2\baselineskip]
+been handy to have someone on the team check the LHN to see if we used
+the LHN, backup networks, and what the speeds of the LHN. ~ We will add
+a networking person to the OR team. ~\\[2\baselineskip]
 
 \newpage
 \section{Detailed Test Results}
@@ -248,22 +256,22 @@ will add a networking person to the OR team. ~\\[2\baselineskip]
 
 \subsection{Test Cycle LVV-C106 }
 
-Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C106}{LDM-503-6 Comcam verification readiness}} in Jira.
+Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C106}{LDM-503-6 ComCam verification readiness}} in Jira.
 
-Test Cycle name: LDM-503-6 Comcam verification readiness\\
+Test Cycle name: LDM-503-6 ComCam verification readiness\\
 Status: Done
 
 Verify that the DM services required for ComCam exist and are ready to
 recieve a image from the comcam DAQ at the summit and transfer the file
-to NCSA for viewing on the LSP.~ ~
+to NCSA for viewing on the RSP. ~~
 
 \subsubsection{Software Version/Baseline}
 Not provided.
 
 \subsubsection{Configuration}
-There are many pieces here. ~ ~ Comcam DAQ, Header service, comcam
-archiver/forwarder, AT-handoff, DTN transfers, ~DM butler/G3, LDF file
-systems, LDF LSP.~
+There are many pieces here. ~ ~ComCam DAQ, ComCam-header service, ComCam
+archiver/forwarder, DTN transfers, ~DM butler/G3, LDF file systems, LDF
+RSP.~
 
 \subsubsection{Test Cases in LVV-C106 Test Cycle}
 
@@ -273,12 +281,12 @@ Version \textbf{1}.
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1549}{\textit{ LVV-T1549 } }
 test case in Jira.
 
-Verify that Comcam has all the services running and verified working for
-retrieving an image from the comcam DAQ and store it on file systems at
-the LDF for viewing by LSP. ~
+Verify that ComCam has all the services running and verified working for
+retrieving an image from the ComCam DAQ and store it on file systems at
+the LDF for viewing by RSP. ~
 
 \textbf{ Preconditions}:\\
-Comcam must be In LaSerena and producing images with proper headers. ~
+ComCam must be In LaSerena and producing images with proper headers. ~
 
 Execution status: {\bf Pass }
 
